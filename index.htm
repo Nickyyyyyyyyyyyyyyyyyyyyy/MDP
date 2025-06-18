@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мій щоденний план</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="theme-light">
+    <div class="container">
+        <div class="header">
+            <h2 id="currentMonthYear"></h2>
+            <div class="nav-buttons">
+                <button id="todayBtn" title="Перейти до сьогоднішнього дня"><i class="fas fa-calendar-day"></i> Сьогодні</button>
+                <button id="prevDayBtn" title="Попередній день"><i class="fas fa-chevron-left"></i></button>
+                <button id="nextDayBtn" title="Наступний день"><i class="fas fa-chevron-right"></i></button>
+                <button id="themeToggleBtn" title="Змінити тему"><i class="fas fa-sun"></i></button> </div>
+        </div>
+
+        <div class="days-nav">
+            </div>
+
+        <div class="task-section">
+            <h1 id="selectedDateHeader"></h1>
+
+            <div class="filters">
+                <div class="task-summary">
+                    Виконано: <span id="completedTasksCount">0</span>/<span id="totalTasksCount">0</span>
+                </div>
+                <select id="categoryFilter">
+                    <option value="all">Всі категорії</option>
+                    </select>
+                <button id="clearCompletedBtn" title="Очистити виконані завдання"><i class="fas fa-trash-alt"></i></button> </div>
+
+            <ul id="taskList">
+                </ul>
+            <div class="input-group add-task-button-container">
+                <button id="openAddTaskModalBtn" title="Додати нове завдання"><i class="fas fa-plus"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <div id="taskModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2 id="modalTitle">Додати нове завдання</h2>
+            <div class="form-group">
+                <label for="modalTaskName">Завдання:</label>
+                <input type="text" id="modalTaskName" placeholder="Назва завдання" required>
+            </div>
+            <div class="form-group">
+                <label for="modalTaskTime">Час (необов'язково):</label>
+                <input type="time" id="modalTaskTime">
+            </div>
+            <div class="form-group">
+                <label for="modalTaskDescription">Опис (необов'язково):</label>
+                <textarea id="modalTaskDescription" placeholder="Детальний опис завдання"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="modalTaskCategory">Категорія (необов'язково):</label>
+                <input type="text" id="modalTaskCategory" placeholder="Наприклад, "Робота", "Особисте"">
+            </div>
+            <button id="saveTaskBtn">Зберегти завдання</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

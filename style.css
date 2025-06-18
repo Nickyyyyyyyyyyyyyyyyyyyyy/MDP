@@ -1,0 +1,1060 @@
+/* CSS Variables for theming */
+:root {
+    --bg-color: #f4f7f6;
+    --container-bg: #ffffff;
+    --text-color: #333;
+    --header-color: #2c3e50;
+    --primary-color: #4CAF50; /* Green */
+    --primary-dark-color: #45a049;
+    --primary-shadow: rgba(76, 175, 80, 0.45); /* Slightly more opaque shadow */
+    --secondary-color: #e0e0e0;
+    --secondary-hover-color: #d0d0d0;
+    --day-item-bg: #f0f0f0;
+    --day-item-border: #e0e0e0;
+    --day-item-text: #555;
+    --day-item-hover-bg: #e5e5e5;
+    --day-item-active-bg: #8BC34A;
+    --day-item-active-border: #689F38;
+    --day-item-active-text: white;
+    --day-item-today-bg: #fff9e6; /* Light yellow */
+    --day-item-today-border: #ffc107; /* Yellow */
+    --day-item-today-text: #e65100; /* Dark orange */
+    --task-item-bg: #f9f9f9;
+    --task-item-border: #eee;
+    --task-item-shadow: rgba(0, 0, 0, 0.06); /* Slightly more visible shadow */
+    --task-completed-bg: #e6ffe6;
+    --task-completed-text: #888;
+    --task-details-color: #666;
+    --task-category-bg: #e0f2f7; /* Light blue */
+    --task-category-text: #2196F3; /* Blue */
+    --task-description-color: #777;
+    --task-action-color: #a0a0a0;
+    --task-action-hover-color: #555;
+    --modal-bg: rgba(0, 0, 0, 0.7); /* Slightly darker modal overlay */
+    --modal-content-bg: #fefefe;
+    --modal-shadow: rgba(0, 0, 0, 0.3); /* Slightly darker modal shadow */
+    --input-border: #ddd;
+    --input-focus-shadow: rgba(76, 175, 80, 0.3); /* Slightly more prominent focus shadow */
+    --scroll-thumb-color: #bbb; /* Slightly darker scroll thumb */
+    --scroll-track-color: #f0f0f0;
+    --focus-outline-color: var(--primary-color); /* New variable for consistent focus outline */
+    --button-text-shadow: 0 1px 2px rgba(0,0,0,0.1); /* Subtle text shadow for white text on buttons */
+    --selection-bg: var(--primary-color); /* Background for selected text */
+    --selection-color: white; /* Color for selected text */
+}
+
+/* Dark theme variables */
+body.theme-dark {
+    --bg-color: #2c3e50;
+    --container-bg: #34495e;
+    --text-color: #ecf0f1;
+    --header-color: #ecf0f1;
+    --primary-color: #2ecc71; /* Brighter green for dark theme */
+    --primary-dark-color: #27ae60;
+    --primary-shadow: rgba(46, 204, 113, 0.5); /* Slightly more opaque shadow */
+    --secondary-color: #4a6781;
+    --secondary-hover-color: #5d7f9c;
+    --day-item-bg: #4a6781;
+    --day-item-border: #5d7f9c;
+    --day-item-text: #ecf0f1;
+    --day-item-hover-bg: #5d7f9c;
+    --day-item-active-bg: #27ae60; /* Darker green */
+    --day-item-active-border: #2ecc71;
+    --day-item-active-text: white;
+    --day-item-today-bg: #f39c12; /* Orange for today in dark theme */
+    --day-item-today-border: #e67e22;
+    --day-item-today-text: white;
+    --task-item-bg: #4a6781;
+    --task-item-border: #5d7f9c;
+    --task-item-shadow: rgba(0, 0, 0, 0.3); /* Slightly more visible shadow */
+    --task-completed-bg: #3d5c7a;
+    --task-completed-text: #bdc3c7;
+    --task-details-color: #bdc3c7;
+    --task-category-bg: #5f80b0;
+    --task-category-text: #e0f2f7;
+    --task-description-color: #a0a0a0;
+    --task-action-color: #bdc3c7;
+    --task-action-hover-color: #ecf0f1;
+    --modal-bg: rgba(0, 0, 0, 0.85); /* Slightly darker modal overlay */
+    --modal-content-bg: #34495e;
+    --modal-shadow: rgba(0, 0, 0, 0.5); /* Slightly darker modal shadow */
+    --input-border: #5d7f9c;
+    --input-focus-shadow: rgba(46, 204, 113, 0.4); /* Slightly more prominent focus shadow */
+    --scroll-thumb-color: #6c7a89;
+    --scroll-track-color: #4a6781;
+    --focus-outline-color: var(--primary-color);
+    --button-text-shadow: none; /* No text shadow needed for dark theme buttons */
+    --selection-bg: var(--primary-dark-color); /* Background for selected text in dark theme */
+    --selection-color: white; /* Color for selected text in dark theme */
+}
+
+/* Global box-sizing for consistent layout - ESSENTIAL for predictable sizing */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+/* Custom selection styles for a branded look */
+::selection {
+    background: var(--selection-bg);
+    color: var(--selection-color);
+}
+::-moz-selection { /* For Firefox */
+    background: var(--selection-bg);
+    color: var(--selection-color);
+}
+
+/* General Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    color: var(--text-color);
+    padding: 20px;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth theme transition */
+    overflow-x: hidden; /* Prevent horizontal scroll on some mobile layouts */
+    line-height: 1.6; /* Improved readability for body text */
+}
+
+/* Custom Scrollbar - More refined appearance and hover effect */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px; /* For horizontal scrollbars */
+}
+::-webkit-scrollbar-track {
+    background: var(--scroll-track-color);
+    border-radius: 10px;
+    box-shadow: inset 0 0 4px rgba(0,0,0,0.05); /* Subtle inner shadow */
+}
+::-webkit-scrollbar-thumb {
+    background: var(--scroll-thumb-color);
+    border-radius: 10px;
+    transition: background 0.2s ease; /* Smooth transition on hover */
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #666; /* Darker on hover for better feedback */
+}
+::-webkit-scrollbar-corner {
+    background: transparent; /* Make corner transparent */
+}
+
+
+.container {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(12px) saturate(120%);
+    -webkit-backdrop-filter: blur(12px) saturate(120%);
+    padding: 40px 48px;
+    border-radius: 24px;
+    /* Adjusted shadow for more depth and clarity - multi-layered shadow */
+    box-shadow:
+        0 10px 40px rgba(60, 60, 60, 0.15), /* General shadow */
+        0 2px 10px rgba(76, 175, 80, 0.08), /* Subtle accent shadow */
+        inset 0 0 0 1px rgba(255,255,255,0.2); /* Inner subtle highlight */
+    width: 100%;
+    max-width: 480px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    border: 1.5px solid rgba(200,200,200,0.25);
+    transition: background-color 0.3s, box-shadow 0.3s, border 0.3s;
+}
+
+/* Glassmorphism for dark theme */
+body.theme-dark .container {
+    background: rgba(44, 62, 80, 0.7);
+    backdrop-filter: blur(14px) saturate(120%);
+    -webkit-backdrop-filter: blur(14px) saturate(120%);
+    border: 1.5px solid rgba(80,100,130,0.25);
+    /* Adjusted shadow for dark theme container */
+    box-shadow:
+        0 10px 40px rgba(0, 0, 0, 0.4), /* General shadow */
+        0 2px 10px rgba(46, 204, 113, 0.15), /* Subtle accent shadow */
+        inset 0 0 0 1px rgba(255,255,255,0.05); /* Inner subtle highlight */
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+    flex-wrap: wrap; /* Для адаптивності */
+    gap: 18px;
+}
+
+#currentMonthYear {
+    font-size: 1.9em; /* Slightly larger for prominence */
+    color: var(--header-color);
+    font-weight: 600;
+    flex-grow: 1;
+    text-align: left;
+    transition: color 0.3s ease;
+    letter-spacing: 0.02em;
+    text-shadow: 0 1px 2px rgba(76,175,80,0.06); /* Slightly more prominent text shadow */
+    user-select: none; /* Prevent text selection */
+}
+
+.nav-buttons {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap; /* Для адаптивності */
+    justify-content: flex-end;
+}
+
+.nav-buttons button {
+    background: rgba(240, 240, 240, 0.7);
+    border: none;
+    border-radius: 16px;
+    width: 44px;
+    height: 44px;
+    font-size: 1.25em;
+    color: var(--day-item-text);
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(76,175,80,0.08); /* Slightly more prominent shadow */
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s, transform 0.15s;
+    outline: none; /* Removed default outline */
+    user-select: none; /* Prevent text selection */
+}
+
+.nav-buttons button:hover {
+    background: var(--primary-color);
+    color: #fff;
+    box-shadow: 0 4px 16px var(--primary-shadow);
+    transform: translateY(-2px) scale(1.07);
+}
+.nav-buttons button:focus { /* Consistent focus style for accessibility */
+    outline: 2px solid var(--focus-outline-color);
+    outline-offset: 2px;
+}
+.nav-buttons button:active { /* "Pressed" state */
+    transform: translateY(0) scale(1);
+    box-shadow: 0 1px 4px rgba(76,175,80,0.2), inset 0 0 5px rgba(0,0,0,0.1);
+    background: var(--primary-dark-color); /* Deeper color when pressed */
+    color: #fff;
+}
+
+
+#todayBtn {
+    border-radius: 14px;
+    /* Значно збільшено горизонтальний padding для більшої ширини */
+    padding: 0 35px; /* Збільшено з 25px до 35px */
+    font-size: 1.1em; /* Трохи збільшено розмір шрифту */
+    font-weight: 600;
+    background: linear-gradient(90deg, var(--primary-color) 80%, var(--primary-dark-color) 100%);
+    color: #fff;
+    box-shadow: 0 3px 12px var(--primary-shadow);
+    letter-spacing: 0.01em;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    text-shadow: var(--button-text-shadow);
+    flex-grow: 1;
+    min-width: 100px; /* Збільшено мінімальну ширину */
+    height: 48px; /* Додано фіксовану висоту для кращого контролю */
+    user-select: none;
+    transition: background 0.2s, transform 0.18s, box-shadow 0.2s, padding 0.2s, font-size 0.2s; /* Додано переходи для нових властивостей */
+}
+
+#todayBtn:hover {
+    background: linear-gradient(90deg, var(--primary-dark-color) 80%, var(--primary-color) 100%);
+    box-shadow: 0 5px 18px var(--primary-shadow);
+    transform: translateY(-2px);
+}
+#todayBtn:focus {
+    outline: 2px solid white;
+    outline-offset: 2px;
+}
+#todayBtn:active {
+    transform: translateY(0) scale(1);
+    box-shadow: 0 1px 8px var(--primary-shadow), inset 0 0 5px rgba(0,0,0,0.1);
+    background: var(--primary-dark-color);
+}
+
+
+.days-nav {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    margin-bottom: 32px;
+}
+
+.day-item {
+    background: rgba(255,255,255,0.55);
+    border: 2.5px solid var(--day-item-border);
+    border-radius: 16px;
+    padding: 16px 0;
+    font-size: 1.08em;
+    font-weight: 600;
+    color: var(--day-item-text);
+    box-shadow: 0 3px 12px rgba(76,175,80,0.08); /* Slightly more prominent shadow */
+    transition: background 0.25s, border-color 0.25s, color 0.25s, transform 0.18s, box-shadow 0.18s;
+    cursor: pointer;
+    outline: none; /* Removed default outline */
+    user-select: none; /* Prevent text selection */
+    overflow: hidden; /* Ensure content stays within bounds */
+    position: relative;
+    z-index: 1; /* For stacking context with pseudo-elements */
+}
+
+.day-item::before { /* Subtle overlay for visual depth */
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.05), rgba(255,255,255,0.0));
+    pointer-events: none;
+    z-index: -1;
+}
+
+.day-item.today {
+    background: linear-gradient(90deg, var(--day-item-today-bg) 80%, #fffbe6 100%);
+    border-color: var(--day-item-today-border);
+    color: var(--day-item-today-text);
+    font-weight: 700; /* Made bold for emphasis */
+    box-shadow: 0 5px 18px #ffc10744; /* Stronger shadow for today */
+    transform: scale(1.02); /* Slightly scale up "today" */
+}
+
+.day-item .day-name {
+    font-size: 0.85em; /* Slightly larger day name */
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em; /* Subtle letter spacing */
+}
+
+.day-item .day-number {
+    font-size: 1.5em; /* Slightly larger day number */
+    font-weight: 700;
+}
+
+.day-item:hover {
+    background: var(--day-item-hover-bg);
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+    transform: translateY(-4px) scale(1.04);
+    box-shadow: 0 6px 20px var(--primary-shadow); /* Stronger shadow on hover */
+}
+.day-item:focus { /* Consistent focus style for accessibility */
+    outline: 2px solid var(--focus-outline-color);
+    outline-offset: 2px;
+}
+.day-item:active { /* "Pressed" state */
+    transform: translateY(0) scale(1);
+    box-shadow: 0 1px 8px rgba(76,175,80,0.3), inset 0 0 5px rgba(0,0,0,0.1);
+    background: var(--primary-dark-color);
+    color: white; /* Keep white text when pressed */
+    border-color: var(--primary-dark-color);
+}
+.day-item.today:active { /* Specific pressed state for today */
+    background: var(--day-item-today-border);
+    color: white;
+    box-shadow: 0 1px 8px #ffc10766, inset 0 0 5px rgba(0,0,0,0.1);
+}
+
+.day-item.active {
+    background: linear-gradient(90deg, var(--day-item-active-bg) 80%, #aed581 100%);
+    border-color: var(--day-item-active-border);
+    color: var(--day-item-active-text);
+    box-shadow: 0 8px 28px var(--primary-shadow); /* Stronger shadow for active */
+    transform: translateY(-2px) scale(1.03);
+}
+
+.task-section {
+    padding-top: 18px;
+    border-top: 1.5px solid var(--secondary-color);
+    margin-top: 10px; /* Slight margin adjustment */
+}
+
+#selectedDateHeader {
+    font-size: 1.9em; /* Slightly larger for prominence */
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    font-weight: 600;
+    transition: color 0.3s ease;
+    user-select: none; /* Prevent text selection */
+}
+
+/* Filters and Summary */
+.filters {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 18px;
+    font-size: 1em;
+    flex-wrap: wrap; /* Адаптивність */
+}
+
+.task-summary {
+    color: var(--text-color);
+    font-weight: 500;
+    flex-shrink: 0; /* Prevent summary from shrinking on small screens */
+    user-select: none; /* Prevent text selection */
+}
+#completedTasksCount {
+    color: var(--primary-color);
+    font-weight: bold;
+}
+#totalTasksCount {
+    color: var(--header-color);
+    font-weight: bold;
+}
+
+
+.filters label {
+    color: var(--text-color);
+    font-weight: 500;
+    flex-shrink: 0;
+    user-select: none; /* Prevent text selection */
+}
+
+#categoryFilter {
+    padding: 10px 16px;
+    border: 1.5px solid var(--input-border);
+    border-radius: 10px;
+    font-size: 1em;
+    background: rgba(255,255,255,0.7);
+    color: var(--text-color);
+    box-shadow: 0 1px 4px rgba(76,175,80,0.05); /* Slightly more visible shadow */
+    transition: border-color 0.2s, box-shadow 0.2s, background 0.2s, color 0.2s;
+    width: 100%; /* Ensure it takes full width */
+    max-width: 180px; /* Limit max width for better desktop layout */
+    cursor: pointer;
+    outline: none; /* Removed default outline */
+}
+body.theme-dark #categoryFilter {
+    background: rgba(52,73,94,0.7); /* Dark theme glass effect for select */
+}
+
+
+#categoryFilter:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 4px var(--input-focus-shadow);
+    background: #fff; /* Keep light theme background on focus */
+    outline: 2px solid var(--focus-outline-color); /* Consistent focus style */
+    outline-offset: 2px;
+}
+body.theme-dark #categoryFilter:focus {
+    background: var(--container-bg); /* Use dark theme container background on focus */
+}
+
+
+/* Clear completed modern button */
+#clearCompletedBtn {
+    background: linear-gradient(90deg, #dc3545 80%, #e57373 100%);
+    color: #fff;
+    padding: 10px 18px;
+    border-radius: 10px;
+    font-size: 1em;
+    font-weight: 600;
+    box-shadow: 0 2px 10px #dc35454a; /* Slightly more prominent shadow */
+    transition: background 0.2s, box-shadow 0.2s, transform 0.15s;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    text-shadow: var(--button-text-shadow); /* Subtle text shadow */
+    flex-shrink: 0; /* Prevent shrinking on small screens */
+    user-select: none; /* Prevent text selection */
+}
+
+#clearCompletedBtn:hover {
+    background: linear-gradient(90deg, #c82333 80%, #e57373 100%);
+    transform: translateY(-2px) scale(1.04);
+    box-shadow: 0 4px 18px #dc354566; /* Stronger shadow on hover */
+}
+#clearCompletedBtn:focus { /* Consistent focus style for accessibility */
+    outline: 2px solid white;
+    outline-offset: 2px;
+}
+#clearCompletedBtn:active { /* "Pressed" state */
+    transform: translateY(0) scale(1);
+    box-shadow: 0 1px 8px #dc35454a, inset 0 0 5px rgba(0,0,0,0.1);
+    background: #c82333; /* Deeper red when pressed */
+}
+
+
+#taskList {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 25px;
+    max-height: 40vh; /* Обмеження висоти для прокрутки */
+    overflow-y: auto; /* Дозволити прокрутку */
+    padding-right: 5px; /* Для прокрутки */
+    scrollbar-gutter: stable; /* Prevents layout shift when scrollbar appears */
+}
+
+#taskList li {
+    background: rgba(255,255,255,0.8);
+    border-radius: 12px;
+    border: 1.5px solid var(--task-item-border);
+    /* Multi-layered shadow for task items */
+    box-shadow:
+        0 2px 10px var(--task-item-shadow),
+        0 1px 4px rgba(0,0,0,0.03);
+    padding: 16px 22px;
+    margin-bottom: 14px;
+    transition: background 0.25s, box-shadow 0.18s, transform 0.18s, opacity 0.5s ease-in-out, height 0.5s ease-in-out, margin-bottom 0.5s ease-in-out, padding 0.5s ease-in-out; /* Added ease-in-out for smoother hide */
+    position: relative; /* Crucial for absolute positioning of task-actions */
+    cursor: pointer; /* Indicates it's interactive (e.g., clickable to expand/toggle) */
+    outline: none; /* Removed default outline */
+    user-select: none; /* Prevent text selection */
+}
+body.theme-dark #taskList li {
+    background: rgba(44, 62, 80, 0.6); /* Dark theme glass effect for task item */
+    border: 1.5px solid var(--task-item-border); /* Adjust border for dark theme */
+}
+
+
+#taskList li.hidden {
+    opacity: 0;
+    height: 0;
+    margin-bottom: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    border: none; /* Приховати рамку */
+    box-shadow: none;
+    pointer-events: none; /* Disable interaction when hidden */
+}
+
+
+#taskList li.completed {
+    background: linear-gradient(90deg, var(--task-completed-bg) 80%, #e0ffe0 100%);
+    color: var(--task-completed-text);
+    text-decoration: line-through;
+    opacity: 0.7;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.02); /* Lighter shadow for completed tasks */
+}
+body.theme-dark #taskList li.completed {
+    background: var(--task-completed-bg); /* Consistent with dark theme variable */
+    color: var(--task-completed-text);
+}
+
+#taskList li:hover {
+    transform: translateX(6px) scale(1.01);
+    box-shadow: 0 6px 18px var(--primary-shadow);
+}
+#taskList li:focus-within { /* Added for keyboard navigation accessibility to tasks */
+    outline: 2px solid var(--focus-outline-color);
+    outline-offset: 2px;
+}
+#taskList li:active { /* "Pressed" state for task items */
+    transform: translateX(2px) scale(0.99); /* Slight shift and scale down */
+    box-shadow: 0 1px 6px var(--primary-shadow), inset 0 0 5px rgba(0,0,0,0.05);
+    background: var(--day-item-hover-bg); /* Slightly darker when pressed */
+}
+body.theme-dark #taskList li:active {
+    background: var(--secondary-hover-color);
+}
+
+
+#taskList li .task-main-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+#taskList li .task-main-info span {
+    flex-grow: 1;
+    font-size: 1.05em;
+    font-weight: 500;
+    color: inherit; /* Успадковуємо колір від батька (для виконаних завдань) */
+    text-align: left; /* Ensure text aligns left */
+    padding-right: 40px; /* Make space for action buttons */
+    word-break: break-word; /* Allow long words to break */
+}
+
+#taskList li .task-details {
+    font-size: 0.9em;
+    color: var(--task-details-color);
+    margin-top: 5px;
+    width: 100%;
+    text-align: left; /* Ensure text aligns left */
+}
+
+#taskList li .task-details .time {
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-right: 10px;
+    white-space: nowrap; /* Prevent time from wrapping */
+}
+
+#taskList li .task-details .category {
+    background-color: var(--task-category-bg);
+    color: var(--task-category-text);
+    padding: 3px 8px;
+    border-radius: 5px;
+    font-size: 0.8em;
+    margin-left: 10px;
+    display: inline-block;
+    white-space: nowrap; /* Prevent category from wrapping */
+    letter-spacing: 0.02em;
+}
+
+#taskList li .task-details .description {
+    margin-top: 8px;
+    font-style: italic;
+    color: var(--task-description-color);
+    white-space: pre-wrap; /* Preserve whitespace and allow line breaks */
+    word-break: break-word; /* Allow long words to break */
+}
+
+.task-actions {
+    display: flex;
+    gap: 6px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 10; /* Ensure actions are above other elements if needed */
+}
+
+.task-actions button {
+    font-size: 1.25em;
+    color: var(--task-action-color);
+    padding: 7px;
+    border-radius: 8px;
+    background: rgba(240,240,240,0.7);
+    transition: color 0.2s, background 0.2s, transform 0.15s, box-shadow 0.15s;
+    cursor: pointer;
+    border: none;
+    outline: none; /* Removed default outline */
+    display: flex; /* For perfect centering of icon */
+    align-items: center;
+    justify-content: center;
+    width: 32px; /* Ensure consistent button size */
+    height: 32px; /* Ensure consistent button size */
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05); /* Subtle shadow for action buttons */
+}
+body.theme-dark .task-actions button {
+    background: rgba(52,73,94,0.7); /* Dark theme glass effect for action buttons */
+}
+
+.task-actions button:hover {
+    background: var(--primary-color);
+    color: #fff;
+    transform: scale(1.18);
+    box-shadow: 0 2px 8px var(--primary-shadow);
+}
+.task-actions button:focus { /* Consistent focus style for accessibility */
+    outline: 2px solid white;
+    outline-offset: 2px;
+}
+.task-actions button:active { /* "Pressed" state for action buttons */
+    transform: scale(1);
+    box-shadow: 0 0 3px var(--primary-shadow), inset 0 0 5px rgba(0,0,0,0.1);
+    background: var(--primary-dark-color); /* Deeper color when pressed */
+    color: white;
+}
+
+.task-actions .complete-btn:hover {
+    background: var(--primary-color);
+    color: #fff;
+}
+.task-actions .complete-btn:active {
+    background: var(--primary-dark-color);
+}
+
+.task-actions .delete-btn:hover {
+    background: #dc3545;
+    color: #fff;
+}
+.task-actions .delete-btn:active {
+    background: #c82333;
+}
+.task-actions .edit-btn:hover {
+    background: #ffc107;
+    color: #fff;
+}
+.task-actions .edit-btn:active {
+    background: #e65100;
+}
+
+
+.add-task-button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 25px;
+}
+
+#openAddTaskModalBtn {
+    background: linear-gradient(135deg, var(--primary-color) 80%, var(--primary-dark-color) 100%);
+    color: #fff;
+    width: 68px;
+    height: 68px;
+    border-radius: 50%;
+    font-size: 2.7em;
+    box-shadow: 0 8px 32px var(--primary-shadow);
+    transition: background 0.2s, transform 0.18s, box-shadow 0.2s;
+    cursor: pointer;
+    border: none;
+    outline: none; /* Removed default outline */
+    display: flex; /* For perfect centering of the plus sign */
+    align-items: center;
+    justify-content: center;
+    text-shadow: var(--button-text-shadow); /* Subtle text shadow */
+    user-select: none; /* Prevent text selection */
+}
+
+#openAddTaskModalBtn:hover {
+    background: linear-gradient(135deg, var(--primary-dark-color) 80%, var(--primary-color) 100%);
+    transform: translateY(-4px) scale(1.08);
+    box-shadow: 0 12px 36px var(--primary-shadow);
+}
+#openAddTaskModalBtn:focus { /* Consistent focus style for accessibility */
+    outline: 2px solid white;
+    outline-offset: 2px;
+}
+#openAddTaskModalBtn:active { /* "Pressed" state */
+    transform: translateY(0) scale(1);
+    box-shadow: 0 4px 16px var(--primary-shadow), inset 0 0 8px rgba(0,0,0,0.15);
+    background: var(--primary-dark-color); /* Deeper color when pressed */
+}
+
+
+/* --- Модальне вікно (стилізоване під тему) --- */
+.modal {
+    display: none; /* Initial state: hidden by default */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: var(--modal-bg);
+    /* These styles will apply when display: flex is set by JavaScript */
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.3s ease-out forwards; /* Smooth fade-in animation for modal */
+}
+
+/* Class to be added by JavaScript to show the modal */
+.modal.is-visible {
+    display: flex;
+}
+
+/* Keyframes for modal fade-in */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+@keyframes fadeOut { /* Optional: for fade-out when modal closes */
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+
+.modal-content {
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(18px) saturate(120%);
+    -webkit-backdrop-filter: blur(18px) saturate(120%);
+    border-radius: 20px;
+    /* Adjusted modal content shadow */
+    box-shadow:
+        0 12px 48px var(--modal-shadow),
+        0 2px 10px rgba(76,175,80,0.1),
+        inset 0 0 0 1px rgba(255,255,255,0.3); /* Inner highlight for modal content */
+    padding: 36px;
+    max-width: 500px;
+    width: 90%; /* Make modal content slightly responsive */
+    border: 1.5px solid rgba(200,200,200,0.25);
+    transition: background 0.3s, box-shadow 0.3s, border 0.3s;
+    position: relative; /* Needed if close button is absolutely positioned inside */
+    animation: slideIn 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; /* Smooth slide-in animation */
+}
+
+/* Keyframes for modal content slide-in */
+@keyframes slideIn {
+    from { transform: translateY(-50px) scale(0.95); opacity: 0; }
+    to { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+
+body.theme-dark .modal-content {
+    background: rgba(52,73,94,0.85);
+    border: 1.5px solid rgba(80,100,130,0.25);
+    /* Adjusted modal content shadow for dark theme */
+    box-shadow:
+        0 12px 48px var(--modal-shadow),
+        0 2px 10px rgba(46, 204, 113, 0.15),
+        inset 0 0 0 1px rgba(255,255,255,0.08); /* Inner highlight for dark modal content */
+}
+
+/* Modal close button modern */
+.close-button {
+    color: var(--task-action-color);
+    position: absolute;
+    top: 18px;
+    right: 26px;
+    font-size: 32px;
+    border-radius: 8px;
+    background: rgba(240,240,240,0.7);
+    padding: 2px 8px;
+    transition: color 0.2s, background 0.2s, transform 0.15s, box-shadow 0.15s;
+    cursor: pointer;
+    border: none;
+    outline: none; /* Removed default outline */
+    line-height: 1; /* Ensure perfect vertical centering for 'x' */
+    user-select: none; /* Prevent text selection */
+}
+body.theme-dark .close-button {
+    background: rgba(52,73,94,0.7); /* Dark theme glass effect for close button */
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #fff;
+    background: #dc3545; /* Red for close button hover */
+    outline: 2px solid white;
+    outline-offset: 2px;
+    transform: scale(1.1);
+    box-shadow: 0 2px 10px rgba(220,53,69,0.4);
+}
+.close-button:active { /* "Pressed" state */
+    transform: scale(1);
+    box-shadow: 0 0 4px rgba(220,53,69,0.3), inset 0 0 5px rgba(0,0,0,0.1);
+    background: #c82333;
+}
+
+.modal-content h2 {
+    color: var(--header-color);
+    margin-top: 0;
+    margin-bottom: 25px;
+    font-size: 2em; /* Slightly larger heading */
+    text-align: center;
+    transition: color 0.3s ease;
+    user-select: none; /* Prevent text selection */
+}
+
+.form-group {
+    margin-bottom: 20px; /* Slightly more space between form groups */
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--text-color);
+    font-size: 1em; /* Slightly larger label font size */
+    text-align: left; /* Ensure labels align left */
+    user-select: none; /* Prevent text selection */
+}
+
+.form-group input[type="text"],
+.form-group input[type="time"],
+.form-group textarea,
+.form-group select { /* Added select to general input styles */
+    border: 1.5px solid var(--input-border);
+    border-radius: 10px;
+    font-size: 1.08em;
+    background: rgba(255,255,255,0.7);
+    color: var(--text-color);
+    box-shadow: 0 1px 4px rgba(76,175,80,0.05); /* Slightly more visible shadow */
+    transition: border-color 0.2s, box-shadow 0.2s, background 0.2s, color 0.2s;
+    resize: vertical;
+    min-height: 44px; /* Slightly increased min-height for better touch target */
+    width: 100%; /* Ensure they fill the available width */
+    padding: 12px 16px; /* Consistent padding */
+}
+body.theme-dark .form-group input[type="text"],
+body.theme-dark .form-group input[type="time"],
+body.theme-dark .form-group textarea,
+body.theme-dark .form-group select { /* Added select */
+    background: rgba(52,73,94,0.7); /* Dark theme glass effect for inputs */
+}
+
+
+.form-group textarea {
+    min-height: 100px; /* Slightly increased min-height for textarea */
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus { /* Added select */
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 4px var(--input-focus-shadow);
+    background: #fff; /* Keep light theme background on focus */
+    outline: 2px solid var(--focus-outline-color); /* Consistent focus style */
+    outline-offset: 2px;
+}
+/* Dark theme specific background for focused inputs */
+body.theme-dark .form-group input:focus,
+body.theme-dark .form-group textarea:focus,
+body.theme-dark .form-group select:focus { /* Added select */
+    background: var(--container-bg); /* Use dark theme container background on focus */
+}
+
+
+#saveTaskBtn {
+    background: linear-gradient(90deg, var(--primary-color) 80%, var(--primary-dark-color) 100%);
+    color: #fff;
+    padding: 16px 0;
+    border-radius: 12px;
+    font-size: 1.15em;
+    font-weight: 700;
+    margin-top: 24px;
+    box-shadow: 0 4px 18px var(--primary-shadow); /* Slightly stronger shadow */
+    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+    width: 100%; /* Ensure button fills width */
+    cursor: pointer;
+    border: none;
+    outline: none; /* Removed default outline */
+    text-shadow: var(--button-text-shadow); /* Subtle text shadow */
+    user-select: none; /* Prevent text selection */
+}
+
+#saveTaskBtn:hover {
+    background: linear-gradient(90deg, var(--primary-dark-color) 80%, var(--primary-color) 100%);
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 8px 28px var(--primary-shadow); /* Stronger shadow on hover */
+}
+#saveTaskBtn:focus { /* Consistent focus style for accessibility */
+    outline: 2px solid white;
+    outline-offset: 2px;
+}
+#saveTaskBtn:active { /* "Pressed" state */
+    transform: translateY(0) scale(1);
+    box-shadow: 0 2px 10px var(--primary-shadow), inset 0 0 8px rgba(0,0,0,0.15);
+    background: var(--primary-dark-color); /* Deeper color when pressed */
+}
+
+
+/* --- Responsive design (Mobile Optimization) --- */
+@media (max-width: 600px) {
+    body {
+        padding: 0; /* Remove body padding on small screens if container takes full width */
+    }
+    .container {
+        padding: 18px; /* Slightly more padding for mobile */
+        border-radius: 0;
+        box-shadow: none;
+        min-height: 100vh;
+        width: 100vw;
+        max-width: 100vw;
+        gap: 24px; /* Slightly reduced gap for mobile */
+    }
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px; /* Slightly reduced gap for mobile */
+    }
+    #currentMonthYear {
+        font-size: 1.6em; /* Adjust font size for mobile */
+    }
+    .nav-buttons {
+        width: 100%;
+        justify-content: space-between;
+    }
+    .nav-buttons button {
+        flex-grow: 1;
+        min-width: 0;
+        width: 40px; /* Ensure buttons fit well */
+        height: 40px;
+        font-size: 1.1em;
+    }
+    #todayBtn {
+        padding: 0 25px; /* Збільшено padding для мобільної версії, але все ще більше, ніж було */
+        font-size: 1em; /* Можливо, трохи збільшено або збережено для мобільних */
+        flex-grow: 2;
+        min-width: 90px; /* Збільшено мінімальну ширину для мобільної версії */
+        height: 44px; /* Скоригована висота для мобільних */
+    }
+    .days-nav {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px; /* Slightly reduced gap for mobile */
+    }
+    .day-item {
+        padding: 12px 0; /* Adjust padding for mobile day items */
+        font-size: 1em;
+    }
+    .day-item .day-number {
+        font-size: 1.3em;
+    }
+    .day-item .day-name {
+        font-size: 0.75em;
+    }
+    .filters {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+    }
+    .filters > * {
+        width: 100%;
+        margin-bottom: 0; /* Let gap handle spacing */
+    }
+    #categoryFilter {
+        max-width: 100%; /* Allow full width on mobile */
+    }
+    #taskList {
+        max-height: 60vh;
+        margin-bottom: 15px; /* Slightly less margin bottom */
+    }
+    #taskList li {
+        padding: 14px 18px; /* Adjust padding for mobile task items */
+        margin-bottom: 10px;
+    }
+    #taskList li .task-main-info span {
+        padding-right: 30px; /* Adjust space for actions */
+        font-size: 1em;
+    }
+    .task-actions button {
+        width: 28px; /* Smaller action buttons on mobile */
+        height: 28px;
+        font-size: 1.1em;
+        padding: 5px;
+    }
+    #selectedDateHeader {
+        font-size: 1.6em; /* Adjust font size for mobile */
+        margin-bottom: 15px;
+    }
+    #openAddTaskModalBtn {
+        width: 60px; /* Slightly smaller button for mobile */
+        height: 60px;
+        font-size: 2.4em;
+        box-shadow: 0 6px 24px var(--primary-shadow); /* Adjust shadow for mobile */
+    }
+    #openAddTaskModalBtn:hover {
+        transform: translateY(-2px) scale(1.05); /* Adjust hover for mobile */
+        box-shadow: 0 8px 28px var(--primary-shadow);
+    }
+    .modal-content {
+        width: 95%; /* Make modal content a bit wider on very small screens */
+        padding: 20px; /* Adjust padding for modal on mobile */
+        border-radius: 12px; /* Keep some border-radius */
+    }
+    .close-button {
+        top: 8px; /* Adjust close button position for smaller padding */
+        right: 8px;
+        font-size: 28px;
+        padding: 1px 6px;
+    }
+    .modal-content h2 {
+        font-size: 1.7em; /* Adjust font size for mobile */
+        margin-bottom: 20px;
+    }
+    .form-group {
+        margin-bottom: 15px; /* Adjust form group spacing */
+    }
+    .form-group input[type="text"],
+    .form-group input[type="time"],
+    .form-group textarea {
+        min-height: 40px; /* Adjust min-height for mobile inputs */
+        padding: 10px 14px;
+        font-size: 1em;
+    }
+    .form-group textarea {
+        min-height: 80px; /* Adjust min-height for mobile textarea */
+    }
+    #saveTaskBtn {
+        padding: 14px 0; /* Adjust padding for save button */
+        font-size: 1.1em;
+        margin-top: 18px;
+        box-shadow: 0 3px 12px var(--primary-shadow); /* Adjust shadow for mobile */
+    }
+}
